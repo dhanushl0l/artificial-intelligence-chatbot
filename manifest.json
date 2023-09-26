@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "youtube premium",
+    "version": "1.0",
+    "description": "Replace Element of normal youtube to youtube premium.",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+      "48": "tab-icon.png"
+      }
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://www.youtube.com/*"],
+          "js": ["content.js"]
+        }
+      ],
+      "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      },
+      "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+          "16": "icons/icon16.png",
+          "48": "icons/icon48.png",
+          "128": "icons/icon128.png"
+        }
+      },
+      "permissions": [
+        "activeTab",
+        "storage"
+      ]
+    }
