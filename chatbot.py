@@ -1,5 +1,6 @@
 import nltk
 import re
+from fuzzywuzzy import process 
 from nltk.chat.util import Chat, reflections
 
 pairs = [
@@ -54,6 +55,39 @@ pairs = [
     [r"what is the speed of light", ["The speed of light in a vacuum is approximately 299,792 kilometers per second (km/s) or about 186,282 miles per second (mi/s)."]],
     [r"(.*)tell me a space fact(.*)", ["Certainly! Our solar system is located in the Milky Way galaxy, which is estimated to be about 13.6 billion years old."]],
     [r"what is the largest animal on Earth", ["The largest animal on Earth is the blue whale. Adult blue whales can reach lengths of up to 100 feet (30 meters) and can weigh as much as 200 tons."]],
+       [r"hello|hi|hey", ["Hello! How can I assist you today?"]],
+    [r"how are you", ["I'm just a computer program, but I'm here to help you!"]],
+    [r"what's up|sup", ["Not much. How can I assist you?"]],
+    [r"how's your day", ["I don't experience days, but I'm here to assist you anytime!"]],
+    [r"bye|goodbye|see you|farewell", ["Goodbye! Have a great day!"]],
+    [r"take care", ["You too! If you need assistance in the future, feel free to ask."]],
+    [r"tell me a joke", ["Sure, here's a joke: Why don't scientists trust atoms? Because they make up everything!"]],
+    [r"knock knock", ["Who's there? Opportunity. Opportunity who? Opportunity doesn't knock twice, so seize the moment!"]],
+    [r"what's the weather like today", ["I'm sorry, I don't have access to real-time weather information."]],
+    [r"what time is it", ["I'm sorry, I don't have real-time clock access."]],
+    [r"what is the capital of (.*)", ["The capital of %1 is ... (Sorry, I don't know that one, you can Google it!)"]],
+    [r"tell me a fun fact", ["Sure, here's a fun fact: Honey never spoils!"]],
+    [r"what is the meaning of life", ["The meaning of life is a philosophical question. It can vary for each individual."]],
+    [r"what's your favorite game", ["I don't play games, but I can help you with gaming-related questions!"]],
+    [r"best gaming strategy", ["A good gaming strategy involves practice, teamwork, and adapting to your opponent's moves."]],
+    [r"you're stupid|you're dumb|you're useless", ["I'm here to assist and provide useful information. If you need help, just ask!"]],
+    [r"you suck", ["I'm just a computer program. I don't have feelings, but I'm here to assist you!"]],
+    [r"best travel destinations", ["Some popular travel destinations include Paris, Tokyo, New York, and Bali. It depends on your interests!"]],
+    [r"travel tips", ["Remember to pack light, carry essentials, and respect local customs. Also, have a backup of your important documents!"]],
+    [r"healthy eating tips", ["Focus on balanced meals, eat plenty of fruits and vegetables, and stay hydrated. Portion control is key!"]],
+    [r"exercise routines", ["Incorporate cardio, strength training, and flexibility exercises. Consult a fitness expert for a personalized routine."]],
+    [r"latest tech gadgets", ["Some recent gadgets include smartphones, smartwatches, drones, and virtual reality headsets. Check tech news for updates!"]],
+    [r"tech support", ["For tech support, contact the manufacturer's helpline or visit their official website for FAQs and troubleshooting tips."]],
+    [r"favorite cuisine", ["I don't have preferences, but many people enjoy Italian, Chinese, Indian, and Mexican cuisines."]],
+    [r"cooking tips", ["Prep ingredients before you start, follow the recipe closely, and taste as you go. Cooking is an art; enjoy the process!"]],
+    [r"interesting science fact", ["Certainly! Did you know that honeybees can recognize human faces?"]],
+    [r"environmental conservation", ["Reduce, reuse, and recycle. Plant trees, conserve water, and support eco-friendly initiatives for a greener planet."]],
+    [r"learning resources", ["Explore online platforms like Coursera, edX, and Khan Academy for a wide range of courses. Libraries are great too!"]],
+    [r"study tips", ["Create a study schedule, take breaks, use active learning techniques, and seek help when needed. Practice is key to learning!"]],
+    [r"feeling stressed", ["It's okay to feel stressed. Try deep breathing, meditation, or talk to someone you trust. Don't hesitate to seek professional help."]],
+    [r"lonely|need a friend", ["I'm here for you! While I'm just a chatbot, I'm here to listen and provide support."]],
+    [r"tell me a riddle", ["Sure, here's one: I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?"]],
+    [r"book recommendations", ["Some popular books include 'To Kill a Mockingbird' by Harper Lee, '1984' by George Orwell, and 'The Great Gatsby' by F. Scott Fitzgerald."]],
     # Add more patterns and responses here 😊
 ]
 
@@ -63,7 +97,16 @@ print("Chatbot: Hello! How can I assist you today?")
 while True:
     user_input = input("You: ")
 
+    # Preprocess user input: remove symbols and convert to lowercase
     preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
 
-    response = chatbot.respond(preprocessed_input)
+    # Check for fuzzy matches in patterns
+    best_match, score = process.extractOne(preprocessed_input, [pattern for pattern, _ in pairs])
+    
+    # If the best match has a score below a certain threshold, provide a generic response
+    if score < 80:
+        response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
+    else:
+        response = chatbot.respond(preprocessed_input)
+    
     print("Chatbot:", response)
