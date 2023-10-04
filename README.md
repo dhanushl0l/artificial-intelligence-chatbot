@@ -12,26 +12,10 @@ This is a simple text-based chatbot created for the university project using Pyt
 - Python 3.x
 - NLTK library
 
-## How to Use
+## Video Demo
+[![Demo Video](..)](..)
 
-1. Clone the repository:
-
-git clone <https://github.com/dhanushl0l/artificial-intelligence-chatbot.git>
-cd chatbot-project
-
-markdown
-
-
-2. Install required packages:
-
-pip install -r requirements.txt
-
-markdown
-
-
-3. Run the chatbot:
-
-python chatbot.py
+Click the above image to watch the demo video.
 
 
 ## Customization
