@@ -13,7 +13,7 @@ This is a simple text-based chatbot created for the university project using Pyt
 - NLTK library
 
 ## Video Demo
-[![Demo Video](..)](..)
+[![Demo Video](..)]([..](https://youtu.be/mJ9Tkuu33Is))
 
 Click the above image to watch the demo video.
 
