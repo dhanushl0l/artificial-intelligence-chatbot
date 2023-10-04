@@ -16,7 +16,7 @@ This is a simple text-based chatbot created for the university project using Pyt
 
 1. Clone the repository:
 
-git clone <https://github.com/dhanushl0l/artificial-intelligence-chatbot>
+git clone <https://github.com/dhanushl0l/artificial-intelligence-chatbot.git>
 cd chatbot-project
 
 markdown
