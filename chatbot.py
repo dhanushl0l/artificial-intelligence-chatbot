@@ -97,13 +97,10 @@ print("Chatbot: Hello! How can I assist you today?")
 while True:
     user_input = input("You: ")
 
-    # Preprocess user input: remove symbols and convert to lowercase
     preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
 
-    # Check for fuzzy matches in patterns
     best_match, score = process.extractOne(preprocessed_input, [pattern for pattern, _ in pairs])
     
-    # If the best match has a score below a certain threshold, provide a generic response
     if score < 80:
         response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
     else:
