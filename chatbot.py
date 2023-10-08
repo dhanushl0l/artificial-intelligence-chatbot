@@ -1,21 +1,22 @@
 import os
-import nltk
 import re
+import json
 from fuzzywuzzy import process 
 from nltk.chat.util import Chat, reflections
 
-FILE_NAME = "chatbot_data.txt"
+FILE_NAME = "chatbot_data.json"
 
-if os.path.exists(FILE_NAME):
+try:
     with open(FILE_NAME, "r") as file:
-        pairs = eval(file.read())
+        pairs = json.load(file)
+except FileNotFoundError:
+    pairs = []  # Initialize pairs if the file doesn't exist
 
 chatbot = Chat(pairs, reflections)
 
 print("Chatbot: Hello! How can I assist you today?")
 while True:
     user_input = input("You: ")
-
 
     if user_input.lower() == "stop":
         print("Chatbot: Goodbye! Have a great day!")
@@ -31,19 +32,23 @@ while True:
         if score > best_match_score:
             best_match_score = score
             best_response = responses[0]  
-        
+    
     if best_match_score < 80:
         response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
         
         new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
-        
-        pairs.append([preprocessed_input, [new_response]])
-        
-        with open(FILE_NAME, "w") as file:
-            file.write(str(pairs))
-        
-        response = "Thanks! I've added that response. How can I assist you further?"
+
+        # Prevent adding duplicate entries
+        new_entry = [preprocessed_input, [new_response]]
+        if new_entry not in pairs:
+            pairs.append(new_entry)
+
+        try:
+            with open(FILE_NAME, "w") as file:
+                json.dump(pairs, file)
+        except Exception as e:
+            print(f"Error occurred while saving data: {e}")
+
+        print("Chatbot: Thanks! I've added that response. How can I assist you further?")
     else:
-        response = best_response
-    
-    print("Chatbot:", response)
+        print("Chatbot:", best_response)
