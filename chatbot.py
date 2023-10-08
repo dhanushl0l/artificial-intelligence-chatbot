@@ -15,6 +15,7 @@ except FileNotFoundError:
 chatbot = Chat(pairs, reflections)
 
 print("Chatbot: Hello! How can I assist you today?")
+user_name = None  # Initialize user_name variable here
 while True:
     user_input = input("You: ")
 
@@ -22,7 +23,12 @@ while True:
         print("Chatbot: Goodbye! Have a great day!")
         break
 
-    preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
+    # Check if the user's input matches the pattern "my name is [name]"
+    if user_name is None and re.match(r'my name is (.+)', user_input, re.IGNORECASE):
+        user_name = re.match(r'my name is (.+)', user_input, re.IGNORECASE).group(1)
+        print(f"Chatbot: Nice to meet you, {user_name}!")
+    else:
+        preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
 
     best_match_score = 0
     best_response = None
