@@ -4,7 +4,12 @@ import json
 from fuzzywuzzy import process 
 from nltk.chat.util import Chat, reflections
 
-FILE_NAME = "data.json"
+print("Chatbot")
+print("type 'stop' to exit")
+
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+FILE_NAME = os.path.join(current_directory, "data.json")
 
 try:
     with open(FILE_NAME, "r") as file:
@@ -44,6 +49,10 @@ while True:
             response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
         
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
+
+            if new_response.lower() == "stop":
+                print("Chatbot: Input skipped. How can I assist you further?")
+                continue
 
             # Prevent adding duplicate entries
             new_entry = [preprocessed_input, [new_response]]
