@@ -4,6 +4,9 @@ import json
 from fuzzywuzzy import process 
 from nltk.chat.util import Chat, reflections
 
+print("Chatbot")
+print("type stop to exit")
+
 FILE_NAME = "chatbot_data.json"
 
 try:
@@ -45,6 +48,10 @@ while True:
         
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
 
+            if new_response.lower() == "stop":
+                print("Chatbot: Input skipped. How can I assist you further?")
+                continue
+
             # Prevent adding duplicate entries
             new_entry = [preprocessed_input, [new_response]]
             if new_entry not in pairs:
@@ -59,4 +66,3 @@ while True:
             print("Chatbot: Thanks! I've added that response. How can I assist you further?")
         else:
             print("Chatbot:", best_response)
-            
