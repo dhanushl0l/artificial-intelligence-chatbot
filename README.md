@@ -1,6 +1,6 @@
 # Chatbot Project
 
-This is a simple text-based chatbot created for the university project using Python and NLTK.
+This is a simple text-based chatbot created using Python.
 
 ## Features
 
