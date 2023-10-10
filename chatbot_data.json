@@ -1,4 +1,5 @@
-[["my name is (.+)", ["Hi, .+ How can I help you today?"]], 
+[
+["my name is (.+)", ["Hi, .+ How can I help you today?"]], 
 ["what is your name", ["I am just a chatbot. You can call me whatever you like!"]], 
 ["how are you", ["I'm just a computer program, but I'm doing fine. How can I assist you?"]], 
 ["hello|hi|hey", ["Hello! How can I assist you today?"]], ["bye|goodbye", ["Goodbye! Have a great day!"]], 
@@ -33,4 +34,5 @@
 ["Can you recommend a good Bollywood movie?", ["Certainly! I recommend watching %1. It's a popular Bollywood film with a great storyline."]],
 ["Tell me a traditional Indian festival.", ["One of the most celebrated festivals in India is %1. It's known for its vibrant colors and joyful atmosphere."]],
 ["What is the capital of India?", ["The capital of India is %1. It's a bustling city known for its rich history and cultural heritage."]],
-["How do you say 'hello' in Hindi?", ["'Hello' in Hindi is .+ It's a common greeting in India."]]]
+["How do you say 'hello' in Hindi?", ["'Hello' in Hindi is .+ It's a common greeting in India."]]
+]

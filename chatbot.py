@@ -1,11 +1,11 @@
 import os
 import re
 import json
-from fuzzywuzzy import process 
+from fuzzywuzzy import process
 from nltk.chat.util import Chat, reflections
 
 print("Chatbot")
-print("type stop to exit")
+print("Type 'stop' to exit")
 
 FILE_NAME = "chatbot_data.json"
 
@@ -13,14 +13,13 @@ try:
     with open(FILE_NAME, "r") as file:
         pairs = json.load(file)
 except FileNotFoundError:
-    pairs = []  
+    pairs = []
 
 chatbot = Chat(pairs, reflections)
 
 print("Chatbot: Hello! How can I assist you today?")
-user_name = None  
-preprocessed_input = None  
-best_match_score = 0  
+user_name = None
+preprocessed_input = None
 
 while True:
     user_input = input("You: ")
@@ -34,8 +33,8 @@ while True:
         print(f"Chatbot: Nice to meet you, {user_name}!")
     else:
         preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
-        best_match_score = 0  
-        best_response = None  
+        best_match_score = 0
+        best_response = None
 
         for pattern, responses in pairs:
             match, score = process.extractOne(preprocessed_input, [pattern])
@@ -45,17 +44,15 @@ while True:
 
         if best_match_score < 80:
             response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
-        
-            new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
 
-            if new_response.lower() == "stop":
-                print("Chatbot: Input skipped. How can I assist you further?")
-                continue
+            new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
 
             # Prevent adding duplicate entries
             new_entry = [preprocessed_input, [new_response]]
             if new_entry not in pairs:
                 pairs.append(new_entry)
+
+            best_response = new_response
 
             try:
                 with open(FILE_NAME, "w") as file:
