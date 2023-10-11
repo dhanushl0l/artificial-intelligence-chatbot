@@ -45,7 +45,7 @@ while True:
                 best_match_score = score
                 best_response = responses[0]
 
-        if best_match_score < 80:
+        if best_match_score < 95:
             response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
         
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
