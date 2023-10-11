@@ -1,4 +1,4 @@
-# Chatbot Project.
+# Chatbot
 
 This is a simple text-based chatbot created using Python.
 
