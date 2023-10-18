@@ -18,7 +18,7 @@ To convert text-based datasets into JSON format just use [this py program](https
 - fuzzywuzzy library
 
 ## Demo
-<img src="https://im2.ezgif.com/tmp/ezgif-2-d96c310761.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
+<img src="https://camo.githubusercontent.com/a39e6274c6e8090a657fa8d5d803b9a6f0ec4b783c428aaf5b38bcc231cbff3a/68747470733a2f2f696d322e657a6769662e636f6d2f746d702f657a6769662d322d643936633331303736312e676966" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
 
 ## Usage
 
