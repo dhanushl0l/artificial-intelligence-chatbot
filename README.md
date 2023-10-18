@@ -15,8 +15,8 @@ As per the instructions given, the requirement was to utilize a text file as the
 - NLTK library
 - fuzzywuzzy library
 
-## Video Demo
-[![Demo Video](https://www.dsecctv.com/images/Demo%20clip%20icon%20md.png)](https://youtu.be/mJ9Tkuu33Is)
+## Demo
+<img src="https://im3.ezgif.com/tmp/ezgif-3-c871768daf.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
 
 Click the above image to watch the demo video.
 
