@@ -21,8 +21,8 @@ Click the above image to watch the demo video.
 
 ## Requirements
 
-   pip install fuzzywuzzy
-   pip install nltk
+    pip install fuzzywuzzy
+    pip install nltk
 
 ## Usage
 
