@@ -20,8 +20,6 @@ To convert text-based datasets into JSON format just use [this py program](https
 ## Demo
 <img src="https://im2.ezgif.com/tmp/ezgif-2-d96c310761.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
 
-Click the above image to watch the demo video.
-
 ## Usage
 
 Just download the sorce file and run the `chatbot.py` file using python and `data.json` file should in the same folder as the `chatbot.py` file:
