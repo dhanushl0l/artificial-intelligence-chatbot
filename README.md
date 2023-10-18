@@ -2,7 +2,7 @@
 
 This is a simple text-based chatbot created using Python.
 
-## note
+## Note
 As per the instructions given, the requirement was to utilize a text file as the dataset. However, I chose to use a JSON format due to its superior capability in maintaining structured data integrity. Additionally, utilizing JSON allows me to dynamically add patterns in real-time, enhancing the chatbot's responsiveness and adaptability.
 ## Features
 
