@@ -37,10 +37,6 @@ Users can customize the chatbot's responses by modifying the data.json file. Fol
     chatbot.py: Contains the main chatbot logic.
     data.json: Stores the chatbot's conversation pairs.
 
-## Customization
-
-You can customize the chatbot by modifying the patterns and responses in the `chatbot.py` file.
-
 ## License
 
 Anyone can clone and modify this project, which I created for my college project. Feel free to make any changes and submit a pull request.
