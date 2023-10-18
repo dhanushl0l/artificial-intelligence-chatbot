@@ -13,16 +13,12 @@ As per the instructions given, the requirement was to utilize a text file as the
 
 - Python 3.x
 - NLTK library
+- fuzzywuzzy library
 
 ## Video Demo
 [![Demo Video](https://www.dsecctv.com/images/Demo%20clip%20icon%20md.png)](https://youtu.be/mJ9Tkuu33Is)
 
 Click the above image to watch the demo video.
-
-## Requirements
-
-    pip install fuzzywuzzy
-    pip install nltk
 
 ## Usage
 
