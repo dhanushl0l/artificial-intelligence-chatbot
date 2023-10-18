@@ -16,7 +16,7 @@ As per the instructions given, the requirement was to utilize a text file as the
 - fuzzywuzzy library
 
 ## Demo
-<img src="https://im3.ezgif.com/tmp/ezgif-3-c871768daf.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
+<img src="https://im2.ezgif.com/tmp/ezgif-2-d96c310761.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
 
 Click the above image to watch the demo video.
 
