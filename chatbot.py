@@ -1,15 +1,11 @@
 import os
 import re
 import json
+import spacy
 from fuzzywuzzy import process
-from nltk.chat.util import Chat, reflections
 
 print("Chatbot")
-<<<<<<< HEAD
-print("Type 'stop' to exit")
-=======
 print("type 'stop' to exit")
->>>>>>> main
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -21,17 +17,12 @@ try:
 except FileNotFoundError:
     pairs = []
 
-chatbot = Chat(pairs, reflections)
+nlp = spacy.load("en_core_web_sm")
 
 print("Chatbot: Hello! How can I assist you today?")
-<<<<<<< HEAD
 user_name = None
 preprocessed_input = None
-=======
-user_name = None 
-preprocessed_input = None 
-best_match_score = 0 
->>>>>>> main
+best_match_score = 0
 
 while True:
     user_input = input("You: ")
@@ -44,14 +35,10 @@ while True:
         user_name = re.match(r'my name is (.+)', user_input, re.IGNORECASE).group(1)
         print(f"Chatbot: Nice to meet you, {user_name}!")
     else:
-        preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
-<<<<<<< HEAD
+        doc = nlp(user_input)
+        preprocessed_input = " ".join([token.pos_ for token in doc])
         best_match_score = 0
         best_response = None
-=======
-        best_match_score = 0 
-        best_response = None 
->>>>>>> main
 
         for pattern, responses in pairs:
             match, score = process.extractOne(preprocessed_input, [pattern])
@@ -64,12 +51,14 @@ while True:
 
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
 
+            if new_response.lower() == "stop":
+                print("Chatbot: Input skipped. How can I assist you further?")
+                continue
+
             # Prevent adding duplicate entries
             new_entry = [preprocessed_input, [new_response]]
             if new_entry not in pairs:
                 pairs.append(new_entry)
-
-            best_response = new_response
 
             try:
                 with open(FILE_NAME, "w") as file:
