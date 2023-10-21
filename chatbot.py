@@ -5,9 +5,15 @@ from fuzzywuzzy import process
 from nltk.chat.util import Chat, reflections
 
 print("Chatbot")
+<<<<<<< HEAD
 print("Type 'stop' to exit")
+=======
+print("type 'stop' to exit")
+>>>>>>> main
 
-FILE_NAME = "chatbot_data.json"
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+FILE_NAME = os.path.join(current_directory, "data.json")
 
 try:
     with open(FILE_NAME, "r") as file:
@@ -18,8 +24,14 @@ except FileNotFoundError:
 chatbot = Chat(pairs, reflections)
 
 print("Chatbot: Hello! How can I assist you today?")
+<<<<<<< HEAD
 user_name = None
 preprocessed_input = None
+=======
+user_name = None 
+preprocessed_input = None 
+best_match_score = 0 
+>>>>>>> main
 
 while True:
     user_input = input("You: ")
@@ -33,8 +45,13 @@ while True:
         print(f"Chatbot: Nice to meet you, {user_name}!")
     else:
         preprocessed_input = re.sub(r'[^\w\s]', '', user_input).lower()
+<<<<<<< HEAD
         best_match_score = 0
         best_response = None
+=======
+        best_match_score = 0 
+        best_response = None 
+>>>>>>> main
 
         for pattern, responses in pairs:
             match, score = process.extractOne(preprocessed_input, [pattern])
@@ -42,7 +59,7 @@ while True:
                 best_match_score = score
                 best_response = responses[0]
 
-        if best_match_score < 80:
+        if best_match_score < 95:
             response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
 
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
