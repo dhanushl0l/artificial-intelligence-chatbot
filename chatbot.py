@@ -1,8 +1,7 @@
 import os
-import re
 import json
-import spacy
 from fuzzywuzzy import process
+import spacy
 
 print("Chatbot")
 print("type 'stop' to exit")
@@ -21,8 +20,6 @@ nlp = spacy.load("en_core_web_sm")
 
 print("Chatbot: Hello! How can I assist you today?")
 user_name = None
-preprocessed_input = None
-best_match_score = 0
 
 while True:
     user_input = input("You: ")
@@ -31,24 +28,25 @@ while True:
         print("Chatbot: Goodbye! Have a great day!")
         break
 
-    if user_name is None and re.match(r'my name is (.+)', user_input, re.IGNORECASE):
-        user_name = re.match(r'my name is (.+)', user_input, re.IGNORECASE).group(1)
+    if user_name is None and user_input.lower().startswith("my name is "):
+        user_name = user_input[11:]
         print(f"Chatbot: Nice to meet you, {user_name}!")
     else:
         doc = nlp(user_input)
-        preprocessed_input = " ".join([token.pos_ for token in doc])
+        preprocessed_input = " ".join([token.lemma_ for token in doc if token.is_alpha])
         best_match_score = 0
         best_response = None
 
         for pattern, responses in pairs:
-            match, score = process.extractOne(preprocessed_input, [pattern])
+            pattern_doc = nlp(pattern)
+            processed_pattern = " ".join([token.lemma_ for token in pattern_doc if token.is_alpha])
+            match, score = process.extractOne(preprocessed_input, [processed_pattern])
             if score > best_match_score:
                 best_match_score = score
                 best_response = responses[0]
 
-        if best_match_score < 95:
+        if best_match_score < 70:
             response = "I'm sorry, I didn't understand that. Can you please rephrase your question or provide more details?"
-
             new_response = input("Chatbot: " + response + " Please provide a response for the previous input: ")
 
             if new_response.lower() == "stop":
