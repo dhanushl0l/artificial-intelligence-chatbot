@@ -2,8 +2,10 @@
 
 This is a simple text-based chatbot created using Python.
 
-## note
+## Note
 As per the instructions given, the requirement was to utilize a text file as the dataset. However, I chose to use a JSON format due to its superior capability in maintaining structured data integrity. Additionally, utilizing JSON allows me to dynamically add patterns in real-time, enhancing the chatbot's responsiveness and adaptability.
+
+To convert text-based datasets into JSON format just use [this py program](https://github.com/dhanushl0l/TxtToJsonConverter).
 ## Features
 
 - Responds to specific patterns in user input.
@@ -12,17 +14,11 @@ As per the instructions given, the requirement was to utilize a text file as the
 ## Prerequisites
 
 - Python 3.x
-- NLTK library
+- spacy library (TESTING)
+- fuzzywuzzy library
 
-## Video Demo
-[![Demo Video](https://www.dsecctv.com/images/Demo%20clip%20icon%20md.png)](https://youtu.be/mJ9Tkuu33Is)
-
-Click the above image to watch the demo video.
-
-## Requirements
-
-    pip install fuzzywuzzy
-    pip install nltk
+## Demo
+<img src="https://i.imgur.com/X5U8yeU.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
 
 ## Usage
 
