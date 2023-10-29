@@ -16,6 +16,7 @@ To convert text-based datasets into JSON format just use [this py program](https
 - Python 3.x
 - NLTK library
 - fuzzywuzzy library
+- flask library
 
 ## Demo
 <img src="https://i.imgur.com/X5U8yeU.gif" alt="browser history output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
